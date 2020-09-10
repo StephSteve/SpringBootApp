@@ -1,7 +1,5 @@
 package com.peerlender.profile.application.model;
 
-import com.peerlender.profile.domain.model.User;
-
 import java.time.Duration;
 import java.util.Objects;
 
@@ -26,7 +24,7 @@ public class LoanRequest {
         return borrowerId;
     }
 
-    public Duration getDaysToRepay() {
+    public long getDaysToRepay() {
         return daysToRepay;
     }
 

@@ -2,8 +2,9 @@ package com.peerlender.profile.application;
 
 import com.peerlender.profile.application.model.LoanRequest;
 import com.peerlender.profile.domain.model.User;
-import com.peerlender.profile.domain.repository.LoanRequestRepository;
+import com.peerlender.profile.domain.repository.LoanApplicationRepository;
 import com.peerlender.profile.domain.repository.UserRepository;
+import com.peerlender.profile.domain.service.LoanApplicationAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,18 +16,20 @@ import java.util.List;
 @RestController
 public class LoanController {
 
-    private final LoanRequestRepository loanRequestRepository;
+    private final LoanApplicationRepository loanApplicationRepository;
     private final UserRepository userRepository;
+    private final LoanApplicationAdapter loanApplicationAdapter;
 
     @Autowired
-    public LoanController(LoanRequestRepository loanRequestRepository, UserRepository userRepository) {
-        this.loanRequestRepository = loanRequestRepository;
+    public LoanController(LoanApplicationRepository loanApplicationRepository, UserRepository userRepository, LoanApplicationAdapter loanApplicationAdapter) {
+        this.loanApplicationRepository = loanApplicationRepository;
         this.userRepository = userRepository;
+        this.loanApplicationAdapter = loanApplicationAdapter;
     }
 
     @PostMapping(value = "/loan/request")
-    public void requestLoan(@RequestBody final LoanRequest loanApplication){
-        System.out.println(loanApplication);
+    public void requestLoan(@RequestBody final LoanRequest loanRequest){
+
     }
 
     @GetMapping(value = "/users")

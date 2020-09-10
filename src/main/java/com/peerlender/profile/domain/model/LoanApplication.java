@@ -2,14 +2,17 @@ package com.peerlender.profile.domain.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.time.Duration;
 import java.util.Objects;
 
 @Entity
 public final class LoanApplication {
+
     @Id
     private long id;
     private final int amount;
+    @ManyToOne
     private final User borrower;
     private final Duration repaymentTerm;
     private final double interestRate;
