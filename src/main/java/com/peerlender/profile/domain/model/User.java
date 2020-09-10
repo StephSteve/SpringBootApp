@@ -14,6 +14,9 @@ public final class User {
     private  int age;
     private  String occupation;
 
+    public User() {
+    }
+
     public User(long id, String firstName, String lastName, int age, String occupation) {
         this.id = id;
         this.firstName = firstName;

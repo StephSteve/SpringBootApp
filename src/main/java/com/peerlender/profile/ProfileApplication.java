@@ -1,5 +1,6 @@
 package com.peerlender.profile;
 
+import com.peerlender.profile.domain.model.User;
 import com.peerlender.profile.domain.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -19,7 +20,8 @@ public class ProfileApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		userRepository.save()
-
+		userRepository.save(new User(1, "Anne", "Apple", 27, "Software Developer"));
+		userRepository.save(new User(2, "Peter", "Orange", 21, "QA"));
+		userRepository.save(new User(3, "Mary", "Grape", 35, "AWS Architect"));
 	}
 }
