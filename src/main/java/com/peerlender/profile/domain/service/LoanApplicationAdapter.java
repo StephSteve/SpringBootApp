@@ -25,8 +25,9 @@ public class LoanApplicationAdapter {
         Optional<User> userOptional = userRepository.findById(req.getBorrowerId());
 
         if (userOptional.isPresent()){
-            return new LoanApplication(req.getAmount(), userOptional.get(),
+            LoanApplication loanApplication = new LoanApplication(req.getAmount(), userOptional.get(),
                     Duration.ofDays(req.getDaysToRepay()), req.getInterestRate());
+            return loanApplication;
         }else{
                 throw new UserNotFoundException(req.getBorrowerId());
         }

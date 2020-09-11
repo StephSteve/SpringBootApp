@@ -6,10 +6,10 @@ import java.util.Objects;
 public class LoanRequest {
     private final int amount;
     private final long borrowerId;
-    private final Duration daysToRepay;
+    private final int daysToRepay;
     private final double interestRate;
 
-    public LoanRequest(int amount, long borrowerId, Duration daysToRepay, double interestRate) {
+    public LoanRequest(int amount, long borrowerId, int daysToRepay, double interestRate) {
         this.amount = amount;
         this.borrowerId = borrowerId;
         this.daysToRepay = daysToRepay;
@@ -24,7 +24,7 @@ public class LoanRequest {
         return borrowerId;
     }
 
-    public long getDaysToRepay() {
+    public int getDaysToRepay() {
         return daysToRepay;
     }
 

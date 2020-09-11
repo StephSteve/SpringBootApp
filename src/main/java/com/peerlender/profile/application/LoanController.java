@@ -1,6 +1,7 @@
 package com.peerlender.profile.application;
 
 import com.peerlender.profile.application.model.LoanRequest;
+import com.peerlender.profile.domain.model.LoanApplication;
 import com.peerlender.profile.domain.model.User;
 import com.peerlender.profile.domain.repository.LoanApplicationRepository;
 import com.peerlender.profile.domain.repository.UserRepository;
@@ -29,7 +30,8 @@ public class LoanController {
 
     @PostMapping(value = "/loan/request")
     public void requestLoan(@RequestBody final LoanRequest loanRequest){
-
+        LoanApplication loanApplication = loanApplicationAdapter.transform(loanRequest);
+        loanApplicationRepository.save(loanApplication);
     }
 
     @GetMapping(value = "/users")
