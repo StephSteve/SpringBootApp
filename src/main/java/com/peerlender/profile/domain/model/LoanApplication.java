@@ -27,6 +27,10 @@ public final class LoanApplication {
         this.interestRate = interestRate;
     }
 
+    public long getId() {
+        return id;
+    }
+
     public int getAmount() {
         return amount;
     }

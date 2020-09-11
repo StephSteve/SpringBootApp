@@ -1,6 +1,7 @@
 package com.peerlender.profile.application;
 
 import com.peerlender.profile.application.model.LoanRequest;
+import com.peerlender.profile.domain.model.Loan;
 import com.peerlender.profile.domain.model.LoanApplication;
 import com.peerlender.profile.domain.model.User;
 import com.peerlender.profile.domain.repository.LoanApplicationRepository;
@@ -29,25 +30,31 @@ public class LoanController {
     }
 
     @PostMapping(value = "/loan/request")
-    public void requestLoan(@RequestBody final LoanRequest loanRequest){
+    public void requestLoan(@RequestBody final LoanRequest loanRequest) {
         LoanApplication loanApplication = loanApplicationAdapter.transform(loanRequest);
         loanApplicationRepository.save(loanApplication);
     }
 
     @GetMapping(value = "/loan/requests")
-    public List<LoanApplication> findAllLoanApplications(){
+    public List<LoanApplication> findAllLoanApplications() {
         return loanApplicationRepository.findAll();
     }
 
     @GetMapping(value = "/users")
-    public List<User> findUsers(){
+    public List<User> findUsers() {
         return userRepository.findAll();
     }
 
     @PostMapping(value = "/loan/accept/{lenderId}/{loanApplicationId}")
     public void acceptLoan(@PathVariable final String lenderId,
-                           @PathVariable final String loanApplicationId){
+                           @PathVariable final String loanApplicationId) {
         loanService.acceptLoan(Long.parseLong(loanApplicationId), Long.parseLong(lenderId));
 
     }
+
+    @GetMapping(value = "/loans")
+    public List<Loan> getLoans(){
+        return loanService.getLoans();
+    }
+
 }

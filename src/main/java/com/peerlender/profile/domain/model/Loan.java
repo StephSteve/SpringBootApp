@@ -1,9 +1,6 @@
 package com.peerlender.profile.domain.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 
@@ -13,13 +10,42 @@ public class Loan {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @ManyToOne
     private User borrower;
+    @ManyToOne
     private User lender;
     private int amount;
     private double interestRate;
     private LocalDate dateLent;
     private LocalDate dateDue;
 
+    public long getId() {
+        return id;
+    }
+
+    public User getBorrower() {
+        return borrower;
+    }
+
+    public User getLender() {
+        return lender;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public double getInterestRate() {
+        return interestRate;
+    }
+
+    public LocalDate getDateLent() {
+        return dateLent;
+    }
+
+    public LocalDate getDateDue() {
+        return dateDue;
+    }
 
     public Loan() {
     }
